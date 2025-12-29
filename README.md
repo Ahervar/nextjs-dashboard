@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Frontend Assessment
 
-## Getting Started
+This is a modern, responsive web application built as a technical assessment. It features authentication, data visualization, and complex state management using **Next.js (App Router)**, **Material UI (MUI)**, and **Zustand**.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Authentication**: Admin login using NextAuth.js credentials provider (integrated with DummyJSON Auth).
+* **State Management**: Centralized store using **Zustand** for managing auth, users, and products.
+* **Data Fetching**: Async actions for server-side pagination, search, and category filtering.
+* **UI/UX**: Fully responsive layout using Material UI v5.
+    * Grid layouts for data presentation.
+    * Detail views for individual users and products.
+    * Real-time search and filtering.
+* **Performance**: 
+    * Client-side caching via Zustand (prevents re-fetching data unnecessarily).
+    * Server-Side Rendering (SSR) compatibility with MUI's AppRouterCacheProvider.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Framework**: Next.js 14 (App Router)
+* **UI Library**: Material UI (MUI)
+* **State Management**: Zustand
+* **Authentication**: NextAuth.js
+* **Language**: TypeScript
+* **API**: [DummyJSON](https://dummyjson.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🏗️ Architecture Decisions
 
-To learn more about Next.js, take a look at the following resources:
+### Why Zustand?
+I chose **Zustand** over Redux or Context API for this specific assessment because:
+1.  **Simplicity**: It requires significantly less boilerplate than Redux.
+2.  **Performance**: It solves the "zombie child" and excessive re-render issues inherent in standard React Context.
+3.  **Async Handling**: Async actions (like API calls) are first-class citizens in Zustand, allowing me to keep the UI components clean and logic-free.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Client-Side Caching Strategy
+The Zustand store persists the `users` and `products` arrays in memory during the session. When navigating between the List View and Detail View, the app does not need to re-fetch the main list immediately, providing a snappy, app-like experience.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ⚙️ Setup & Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/my-assessment-app.git](https://github.com/YOUR_USERNAME/my-assessment-app.git)
+    cd my-assessment-app
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open the app:**
+    Visit [http://localhost:3000](http://localhost:3000)
+
+## 🔐 Credentials
+
+To log in to the admin dashboard, use the standard DummyJSON users:
+
+* **Username:** `emilys`
+* **Password:** `emilyspass`
+
+---
+
+## 📂 Folder Structure
+
+* `src/app`: App Router pages and layouts.
+* `src/components`: Reusable UI components (AuthSync, ThemeRegistry).
+* `src/store`: Zustand store definition (`useStore.ts`).
+* `src/theme`: MUI theme configuration.
