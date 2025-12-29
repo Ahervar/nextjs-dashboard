@@ -43,7 +43,7 @@ The Zustand store persists the `users` and `products` arrays in memory during th
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/my-assessment-app.git](https://github.com/YOUR_USERNAME/my-assessment-app.git)
+    git clone [https://github.com/Ahervar/my-assessment-app.git](https://github.com/Ahervar/my-assessment-app.git)
     cd my-assessment-app
     ```
 
